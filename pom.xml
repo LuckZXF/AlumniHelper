@@ -136,6 +136,12 @@
       <version>${commons-dbcp.version}</version>
     </dependency>
 
+    <dependency>
+      <groupId>commons-configuration</groupId>
+      <artifactId>commons-configuration</artifactId>
+      <version>1.8</version>
+    </dependency>
+
     <!--④ 依赖的WEB类库-->
     <dependency>
       <groupId>javax.servlet.jsp</groupId>

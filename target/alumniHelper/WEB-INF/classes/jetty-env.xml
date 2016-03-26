@@ -7,9 +7,9 @@
 		<Arg>
 			<New class="org.apache.commons.dbcp.BasicDataSource">
 				<Set name="driverClassName">com.mysql.jdbc.Driver</Set>
-				<Set name="url">jdbc:mysql://115.28.95.180/test?autoReconnect=true&amp;zeroDateTimeBehavior=convertToNull</Set>
-				<Set name="username">root</Set>
-				<Set name="password">123444</Set>
+				<Set name="url">jdbc:mysql://192.168.1.204:3306/maizuo?autoReconnect=true&amp;zeroDateTimeBehavior=convertToNull</Set>
+				<Set name="username">web</Set>
+				<Set name="password">123456</Set>
 				<Set name="maxActive">20</Set>
 			</New>
 		</Arg>

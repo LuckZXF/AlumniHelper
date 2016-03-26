@@ -6,8 +6,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Repository;
 
-import javax.sql.RowSet;
-
 /**
  *  
  *  ClassName: ${type_name} <br/> 
@@ -36,10 +34,10 @@ public class UserDao {
 
         String sql = "insert into AlumniHelperUser (username,password,"
                 + "mobile,nickname, gender, ccid, token, school, major, " +
-                "classname, avator, payCode) values (?,?,?,?,?,?,?,?,?,?,?,?)";
+                "classname, avator, payCode, graduationTime) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         Object[] data = {user.getUsername(), user.getPassword(), user.getMobile(),user.getNickname(),
-        user.getGender(), user.getCcid(),user.getToken(),user.getSchool(),
-        user.getMajor(), user.getClassname(),user.getAvator(),user.getPayCode()};
+                user.getGender(), user.getCcid(),user.getToken(),user.getSchool(), user.getMajor(),
+                user.getClassname(),user.getAvator(),user.getPayCode(), user.getGraduationTime()};
         try {
             int row = jdbcTemplate.update(sql, data);
             if(row >= 1) {
@@ -73,6 +71,7 @@ public class UserDao {
             String classname=rs.getString("classname");
             String avator=rs.getString("avator");
             String payCode=rs.getString("payCode");
+            String graduationTime = rs.getString("graduationTime");
             AlumniUser user = new AlumniUser();
             user.setNickname(nickname);
             user.setPassword(password);
@@ -86,6 +85,7 @@ public class UserDao {
             user.setClassname(classname);
             user.setAvator(avator);
             user.setPayCode(payCode);
+            user.setGraduationTime(graduationTime);
             return user;
         }
         return null;
@@ -99,10 +99,10 @@ public class UserDao {
     public boolean updateUser(AlumniUser user){
         String sql = "update AlumniHelperUser set password=?,"
                 + "mobile=?,nickname=?, gender=?, ccid=?, token=?, " +
-                "school=?, major=?,classname=?, avator=?, payCode=? where username = ?";
-        Object[] data = {user.getPassword(), user.getMobile(),user.getNickname(),
-                user.getGender(), user.getCcid(),user.getToken(),user.getSchool(),
-                user.getMajor(), user.getClassname(),user.getAvator(),user.getPayCode(), user.getUsername()};
+                "school=?, major=?,classname=?, avator=?, payCode=?, graduationTime=? where username = ?";
+        Object[] data = {user.getPassword(), user.getMobile(),user.getNickname(), user.getGender(),
+                user.getCcid(),user.getToken(),user.getSchool(), user.getMajor(), user.getClassname(),
+                user.getAvator(),user.getPayCode(),user.getGraduationTime(), user.getUsername()};
         try {
             int row = jdbcTemplate.update(sql, data);
             if(row >= 1) {

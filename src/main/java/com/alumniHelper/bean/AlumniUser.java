@@ -22,6 +22,7 @@ public class AlumniUser {
     private String token;
     private String school; //学校
     private String major; //专业
+    private String graduationTime;//毕业时间
     private String classname; //班级名称
     private String avator; //头像图片地址
     private String payCode;//支付二维码图片地址
@@ -138,5 +139,13 @@ public class AlumniUser {
 
     public void setPayCode(String payCode) {
         this.payCode = payCode;
+    }
+
+    public String getGraduationTime() {
+        return graduationTime;
+    }
+
+    public void setGraduationTime(String graduationTime) {
+        this.graduationTime = graduationTime;
     }
 }

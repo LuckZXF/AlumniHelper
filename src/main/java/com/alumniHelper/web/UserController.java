@@ -3,6 +3,7 @@ package com.alumniHelper.web;
 import com.alumniHelper.bean.AlumniUser;
 import com.alumniHelper.bean.Result;
 import com.alumniHelper.dao.UserDao;
+import com.alumniHelper.service.UserService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,9 @@ public class UserController {
     @Autowired
     private UserDao userDao;
 
+
+    @Autowired
+    private UserService userService;
 
     /**
      * 注册
@@ -44,7 +48,12 @@ public class UserController {
                 || StringUtils.isBlank(password) || StringUtils.isBlank(mobile)) {
             return new Result(-1, "请求参数不正确");
         }
+
         AlumniUser user = new AlumniUser(username, nickname, password, mobile);
+        user = userService.registerCloundMsg(user);
+        if(StringUtils.isBlank(user.getToken())) {
+            return new Result(-4, "注册云信失败");
+        }
         if (userDao.saveUser(user)) {
             return new Result(0, "ok");
         }

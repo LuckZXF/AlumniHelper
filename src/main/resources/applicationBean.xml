@@ -9,6 +9,7 @@
 
     <context:component-scan base-package="com.alumniHelper.web"/>
     <context:component-scan base-package="com.alumniHelper.dao"/>
+    <context:component-scan base-package="com.alumniHelper.service"/>
 
        <!-- 数据访问层配置 -->
        <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
